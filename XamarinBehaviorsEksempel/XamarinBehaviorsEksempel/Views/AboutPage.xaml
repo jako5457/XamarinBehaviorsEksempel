@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="XamarinBehaviorsEksempel.Views.AboutPage"
              xmlns:vm="clr-namespace:XamarinBehaviorsEksempel.ViewModels"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              xmlns:behavior="clr-namespace:XamarinBehaviorsEksempel.Behaviors"
              Title="{Binding Title}">
     
@@ -26,6 +27,10 @@
                 <Button Text="Rainbows">
                     <Button.Behaviors>
                         <behavior:RainbowButtonBehavior/>
+                        <xct:EventToCommandBehavior
+                            EventName="Clicked"
+                            Command="{Binding RainbowClick}"
+                        />      
                     </Button.Behaviors>
                 </Button>
 
@@ -34,6 +39,15 @@
                         <behavior:EntryNumberCheckBehavior/>
                     </Entry.Behaviors>
                 </Entry>
+
+                <Button Text="I am a Link">
+                    <Button.Behaviors>
+                        <xct:EventToCommandBehavior
+                            EventName="Clicked"
+                            Command="{Binding OpenWebCommand}"
+                        />
+                    </Button.Behaviors>
+                </Button>
             </StackLayout>
         </ScrollView>
     </Grid>
